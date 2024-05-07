@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "graduate-frontend"
+version = "0.1.0"
+description = ""
+authors = ["AlexeyGrushev <yablokov2004@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+streamlit = "^1.32.1"
+streamlit-option-menu = "^0.3.12"
+pydantic = {extras = ["email"], version = "^2.6.4"}
+pydantic-settings = "^2.2.1"
+streamlit-cookies-controller = "^0.0.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
