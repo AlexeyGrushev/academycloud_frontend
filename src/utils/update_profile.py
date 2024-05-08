@@ -31,7 +31,7 @@ def profile_request(
         "user_access": token
     }
 
-    response = requests.post(
+    response = requests.put(
         f'{settings.API_URL}/api/v1/user/update_profile',
         headers=headers,
         json=json_data,

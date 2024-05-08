@@ -29,3 +29,15 @@ hide_streamlit_style = """
                 }
                 </style>
                 """
+
+
+set_page_background = """
+<style>
+.stApp {
+    background-image: url('https://i.ibb.co/54jsQN6/background.png');
+    background-opacity: 0.3;
+    background-size: cover;
+    background-position: center;
+}
+</style>
+"""

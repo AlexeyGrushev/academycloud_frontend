@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.static.styles import hide_streamlit_style
+from src.static.styles import hide_streamlit_style, set_page_background
 from src.pages.auth.page import AuthPage
 from src.pages.home.page import RootPage
 from src.utils.get_profile import get_user_profile
@@ -29,6 +29,7 @@ class Application:
     def launch(self):
 
         self.st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+        self.st.markdown(set_page_background, unsafe_allow_html=True)
 
         auth = get_user_profile(self.cookie_manager.get("user_access"))
 

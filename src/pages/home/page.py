@@ -66,7 +66,7 @@ class RootPage:
         side_col2.subheader(
             f"{profile['first_name']} {profile['last_name']}"
         )
-        side_col2.text("Опыт")
+        side_col2.text(f"{profile['points']} ⭐️")
 
         menu = self.sidebar_nav_menu()
 
