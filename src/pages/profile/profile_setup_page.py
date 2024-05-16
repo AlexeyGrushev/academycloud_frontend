@@ -9,7 +9,7 @@ from src.utils.update_profile import update_user_profile
 
 
 class SetupProfile:
-    def __init__(self, st, cookie_manager: CookieController) -> None:
+    def __init__(self, st: st, cookie_manager: CookieController) -> None:
         self.st = st
         self.cookie_manager = cookie_manager
         self.markdown()

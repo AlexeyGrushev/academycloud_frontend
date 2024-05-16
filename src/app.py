@@ -1,12 +1,13 @@
 import streamlit as st
 
-from src.static.styles import hide_streamlit_style, set_page_background
+from src.static.styles import (
+    hide_streamlit_style,
+    set_page_background
+)
 from src.pages.auth.page import AuthPage
 from src.pages.home.page import RootPage
 from src.utils.get_profile import get_user_profile
 from src.utils.cookies import get_manager
-
-print("🔴DEBUG: Reload")
 
 
 try:
@@ -41,6 +42,12 @@ class Application:
             for key in cookies:
                 if (key == "_streamlit_xsrf" or key == "ajs_anonymous_id"):
                     continue
+                elif key == "last_lesson_result":
+                    self.cookie_manager.set(
+                        key,
+                        cookies[key],
+                        max_age=60
+                    )
                 else:
                     self.cookie_manager.set(
                         key,

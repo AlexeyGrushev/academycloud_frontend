@@ -75,8 +75,8 @@ def update_user_profile(
     ):
         profile_res = profile_request(
             token,
-            first_name,
-            last_name,
+            first_name.capitalize(),
+            last_name.capitalize(),
             status
         )
 

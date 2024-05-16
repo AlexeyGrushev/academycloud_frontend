@@ -41,3 +41,17 @@ set_page_background = """
 }
 </style>
 """
+
+padding_up_correction = """
+<style>
+.st-emotion-cache-z5fcl4 {
+    width: 100%;
+    padding: 0px;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 2%;
+    min-width: auto;
+    max-width: initial;
+}
+</style>
+"""

@@ -2,6 +2,8 @@ import requests
 
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
+from src.utils.config import settings
+
 
 def upload_file(
     file_type,
@@ -27,7 +29,7 @@ def upload_file(
     }
 
     response = requests.post(
-        'http://0.0.0.0/api/v1/file/upload_file',
+        f'{settings.API_URL}/api/v1/file/upload_file',
         headers=headers,
         files=files,
         cookies=cookies

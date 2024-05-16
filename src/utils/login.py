@@ -1,12 +1,11 @@
 import streamlit
-import requests
 
 from pydantic import ValidationError
 from streamlit_cookies_controller import CookieController
 
 from src.pages.auth.schemas import SPassword
-from src.utils.config import settings
 from src.utils.right_rerun import right_rerun
+from src.utils.authentificate_user import authentificate_user
 
 
 def login_user(
@@ -42,15 +41,8 @@ def login_user(
         )
         return
 
-    payload = {
-        "login_data": login_data,
-        "password": password
-    }
     try:
-        request = requests.post(
-            url=f"{settings.API_URL}/api/v1/auth/login",
-            json=payload
-        )
+        request = authentificate_user(login_data, password)
 
         if request.status_code == 200:
 

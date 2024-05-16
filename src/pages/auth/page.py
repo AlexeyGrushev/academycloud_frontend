@@ -32,7 +32,7 @@ class AuthPage:
         password = auth.text_input("Пароль", type="password")
         auth_button = auth.button("Войти")
 
-        if auth_button:
+        if auth_button or password:
             login_user(
                 self.st,
                 self.cookie_manager,
