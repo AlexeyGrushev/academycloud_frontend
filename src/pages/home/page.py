@@ -106,6 +106,7 @@ class RootPage:
             ProfilePage(self.st, self.cookie_manager)
 
         self.st.sidebar.write("© Academy Cloud 2024")
+        self.st.sidebar.write("academy.cloud@bk.ru")
 
         logout_btn = self.st.sidebar.button("Выйти")
         if logout_btn:

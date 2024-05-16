@@ -58,6 +58,8 @@ class AuthPage:
                 icon="ℹ"
             )
 
+        self.st.sidebar.write("academy.cloud@bk.ru")
+
         self.st.title(
             ":blue[Academy Cloud]. Облако знаний в шаге от Вас!"
         )
