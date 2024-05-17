@@ -62,29 +62,32 @@ class MainPage:
                 )
 
         if self.cookie_manager.get("last_lesson_result"):
-            to_dict = str(self.cookie_manager.get("last_lesson_result"))
-            last_lesson_answers = json.loads(
-                to_dict.replace(
-                    "'", '"'))
-            last_lesson_data = get_lesson(
-                int(last_lesson_answers["lesson_id"]),
-                self.cookie_manager
-            )
+            try:
+                to_dict = str(self.cookie_manager.get("last_lesson_result"))
+                last_lesson_answers = json.loads(
+                    to_dict.replace(
+                        "'", '"'))
+                last_lesson_data = get_lesson(
+                    int(last_lesson_answers["lesson_id"]),
+                    self.cookie_manager
+                )
 
-            last_lesson_text = \
-                f"Вы завершили занятие:" \
-                f" :blue[{last_lesson_data['name']}]  \n" \
-                "За выполнение заработали:" \
-                f" :blue[{last_lesson_answers['reward']}] ⭐️   \n" \
-                "Ответы:  \n"
+                last_lesson_text = \
+                    f"Вы завершили занятие:" \
+                    f" :blue[{last_lesson_data['name']}]  \n" \
+                    "За выполнение заработали:" \
+                    f" :blue[{last_lesson_answers['reward']}] ⭐️   \n" \
+                    "Ответы:  \n"
 
-            for i in range(len(last_lesson_answers["correct_answers"])):
-                if last_lesson_answers["correct_answers"][i] == 1:
-                    last_lesson_text += f"{i + 1}: ✅  \n"
-                else:
-                    last_lesson_text += f"{i + 1}: ❌  \n"
+                for i in range(len(last_lesson_answers["correct_answers"])):
+                    if last_lesson_answers["correct_answers"][i] == 1:
+                        last_lesson_text += f"{i + 1}: ✅  \n"
+                    else:
+                        last_lesson_text += f"{i + 1}: ❌  \n"
 
-            self.st.info(last_lesson_text)
+                self.st.info(last_lesson_text)
+            except Exception:
+                pass
 
         with self.st.container(border=True):
             iteration = 0
