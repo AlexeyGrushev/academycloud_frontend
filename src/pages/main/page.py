@@ -87,6 +87,7 @@ class MainPage:
 
                 self.st.info(last_lesson_text)
             except Exception:
+                self.cookie_manager.remove("last_lesson_result")
                 pass
 
         with self.st.container(border=True):

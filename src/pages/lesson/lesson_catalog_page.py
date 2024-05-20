@@ -64,5 +64,9 @@ class TaskCatalog:
 
                 # Добавляем кнопку "Начать"
                 if st.button(f"Начать выполнение ID: {key}"):
+                    try:
+                        self.cookie_manager.remove("last_lesson_result")
+                    except Exception:
+                        pass
                     self.cookie_manager.set("lesson_id", str(key))
                     right_rerun(self.st, self.cookie_manager)

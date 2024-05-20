@@ -38,26 +38,29 @@ class LeaderBoardPage:
             )
 
             if rating:
-                rating_data = [[
-                    item[1], item[2], str(item[3]) + " ⭐️"
-                ] for item in rating["data"]]
-                rating_data.insert(0, [])
-
-                rating_df = pd.DataFrame(rating_data, columns=(
-                    "Имя", "Фамилия", "Количество очков"))
-                rating_df = rating_df.iloc[1:]
-                self.st.table(rating_df)
-
-                main_scoreboard = get_scoreboard(
-                    token=self.cookie_manager.get("user_access"),
-                    start_date=None,
-                    end_date=None
-                )
-                if not main_scoreboard:
-                    main_scoreboard = "-"
+                if rating["data"] == []:
+                    self.st.write("Рейтинг пока не сформировался")
                 else:
-                    main_scoreboard = main_scoreboard["position"]
-                self.st.write(f"Вы на месте: {main_scoreboard}")
+                    rating_data = [[
+                        item[1], item[2], str(item[3]) + " ⭐️"
+                    ] for item in rating["data"]]
+                    rating_data.insert(0, [])
+
+                    rating_df = pd.DataFrame(rating_data, columns=(
+                        "Имя", "Фамилия", "Количество очков"))
+                    rating_df = rating_df.iloc[1:]
+                    self.st.table(rating_df)
+
+                    main_scoreboard = get_scoreboard(
+                        token=self.cookie_manager.get("user_access"),
+                        start_date=None,
+                        end_date=None
+                    )
+                    if not main_scoreboard:
+                        main_scoreboard = "-"
+                    else:
+                        main_scoreboard = main_scoreboard["position"]
+                    self.st.write(f"Вы на месте: {main_scoreboard}")
 
         with self.st.container(border=True):
             self.st.subheader("Недельный рейтинг.\nТоп 20")
@@ -70,24 +73,27 @@ class LeaderBoardPage:
             )
 
             if week_rating:
-                rating_data = [[
-                    item[1], item[2], str(item[3]) + " ⭐️"
-                ] for item in week_rating["data"]]
-                rating_data.insert(0, [])
-
-                rating_df = pd.DataFrame(rating_data, columns=(
-                    "Имя", "Фамилия", "Количество oчков"))
-                rating_df = rating_df.iloc[1:]
-                self.st.table(rating_df)
-
-                week_scoreboard = get_scoreboard(
-                    token=self.cookie_manager.get("user_access"),
-                    start_date=str(week_dates[0]),
-                    end_date=str(week_dates[1])
-                )
-                if not week_scoreboard:
-                    week_scoreboard = "-"
+                if week_rating["data"] == []:
+                    self.st.write("Рейтинг пока не сформировался")
                 else:
-                    week_scoreboard = week_scoreboard["position"]
+                    rating_data = [[
+                        item[1], item[2], str(item[3]) + " ⭐️"
+                    ] for item in week_rating["data"]]
+                    rating_data.insert(0, [])
 
-                self.st.write(f"Вы на месте: {week_scoreboard}")
+                    rating_df = pd.DataFrame(rating_data, columns=(
+                        "Имя", "Фамилия", "Количество oчков"))
+                    rating_df = rating_df.iloc[1:]
+                    self.st.table(rating_df)
+
+                    week_scoreboard = get_scoreboard(
+                        token=self.cookie_manager.get("user_access"),
+                        start_date=str(week_dates[0]),
+                        end_date=str(week_dates[1])
+                    )
+                    if not week_scoreboard:
+                        week_scoreboard = "-"
+                    else:
+                        week_scoreboard = week_scoreboard["position"]
+
+                    self.st.write(f"Вы на месте: {week_scoreboard}")
